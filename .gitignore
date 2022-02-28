@@ -145,4 +145,8 @@ dist
 # Temporary design files
 /temp
 
+# Test files
+test.js
+
+
 # End of https://www.toptal.com/developers/gitignore/api/node
