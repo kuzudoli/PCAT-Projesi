@@ -24,25 +24,25 @@
 					<div class="row mt-3 pb-3">
 						<div class="col-12">
 							<div class="mx-auto tm-about-text-container px-3">
-								<h2 class="tm-page-title mb-4 tm-text-primary text-center">Add new photo</h2>
+								<h2 class="tm-page-title mb-4 tm-text-primary text-center">Edit Details</h2>
 							</div>							
 						</div>						
 					</div>
             <div class="mx-auto pb-3 tm-about-text-container">
                 <div class="row">
                     <div class="col-lg-8 offset-2 mb-5">
-                        <form method="post" action="/photos" class="tm-contact-form" enctype="multipart/form-data">
+                        <form method="post" action="/photos/<%=photo._id%>?_method=PUT" class="tm-contact-form" enctype="multipart/form-data">
                           <div class="form-group">
-                            <input type="text" name="title" class="form-control rounded-0" placeholder="Photo Title" required="" />
+                            <input type="text" name="title" class="form-control rounded-0" value="<%=photo.title%>" placeholder="Photo Title" required="" />
                           </div>
                           <div class="form-group">
-                            <textarea rows="5" name="description" class="form-control rounded-0" placeholder="Photo Description" required="">kardeş</textarea>
+                            <textarea rows="5" name="description" class="form-control rounded-0" placeholder="Photo Description" required=""><%=photo.description%></textarea>
                           </div>
-                          <div class="form-group">
+                          <!-- <div class="form-group">
                             <input type="file" name="image" class="form-control-file rounded-0">
-                          </div>
+                          </div> -->
                           <div class="form-group mb-0">
-                            <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Submit</span></button>
+                            <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Update</span></button>
                           </div>
                         </form>    
                     </div>
