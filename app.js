@@ -10,7 +10,12 @@ const aboutController = require("./controllers/aboutController");
 const app = express();
 
 //Connect DB
-mongoose.connect("mongodb://localhost/pcat-db");
+mongoose.connect("mongodb+srv://kuzudoli:FfUIQq4VdVqTLzHR@cluster0.lx75i.mongodb.net/pcat-db?retryWrites=true&w=majority")
+.then(()=>{
+    console.log("DB Connected!")
+}).catch((err)=>{
+    console.log(err);
+});
 
 //Template Engine
 app.set("view engine","ejs");
@@ -41,7 +46,7 @@ app.delete('/photos/:id',photoController.deletePhoto);
 
 
 //Server
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
 	console.log(`Sunucu ${port} portunda başlatıldı...`);
 });
