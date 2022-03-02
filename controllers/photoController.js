@@ -22,17 +22,23 @@ exports.getAllPhotos = async (req,res) => {
 
 //GET photo by id
 exports.getPhoto = async(req,res) => {
+    const currentPage = req.url;
+    console.log(currentPage);
     const photo = await Photo.findById(req.params.id)
     res.render("photo",{
-        photo
+        photo,
+        currentPage
     });
 };
 
 //GET edit photo by id
 exports.getEditPhoto = async(req,res) => {
+    const currentPage = req.url;
+    console.log(currentPage);
     const photo = await Photo.findById(req.params.id)
     res.render("edit",{
-        photo
+        photo,
+        currentPage
     });
 };
 
