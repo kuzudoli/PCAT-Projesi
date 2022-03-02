@@ -1,5 +1,4 @@
 const fs = require("fs");
-const fileUpload = require('express-fileupload');
 const Photo = require("../models/Photos");
 
 //GET all photos
@@ -7,16 +6,17 @@ exports.getAllPhotos = async (req,res) => {
     const page = req.query.page || 1;//Set query value if it exist or set 1
     const photosPerPage = 3;
     const totalPhotos = await Photo.find().countDocuments();
-
+    const currentPage = req.url;
     const photos = await Photo.find({})
     .sort('dateCreated')
     .skip((page-1)*photosPerPage)//Skips previous photos
     .limit(photosPerPage);
     
     res.render("index",{
+        currentPage: currentPage,
         photos: photos,
         current: page,
-        pages: Math.ceil(totalPhotos/photosPerPage)
+        pages: Math.ceil(totalPhotos/photosPerPage),
     });
 };
 
@@ -38,7 +38,10 @@ exports.getEditPhoto = async(req,res) => {
 
 //GET add new photo page
 exports.getNewPhoto = (req,res) => {
-    res.render("add");
+    const currentPage = req.url;
+    res.render("add",{
+        currentPage: currentPage
+    });
 };
 
 
